@@ -102,12 +102,56 @@ li {
     width: 30%;
 }
 
-.film-listing .details {
+.details-modal {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
   width: 100%;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+  transition: all 0.2s ease;
+}
+
+.details-modal.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.detail-modal-close {
+  position: absolute;
+  font-size: 7em;
+  color: #FFF;
+  background: #000;
+  line-height: 50px;
+  padding: 29px;
+  top: 0;
+  right: 0;
+}
+
+.detail-text {
+  width: 40%;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  background: rgba(255,255, 255, 0.9);
+  padding: 20px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.detail-text > h3 {
+  font-size: 3em;
 }
 
 .poster {
-  max-width: 200px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  max-width: 30%;
   border: solid 3px #FFF;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }

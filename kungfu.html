@@ -8,7 +8,7 @@
   <div class="container">
     <header>
       <h1>Kung Fu Film List</h1>
-    <button id="fetchButton">Fetch</button>
+    <button id="toggle">Toggle</button>
     {{> loginButtons}}
 
     {{#if isAdmin}}
@@ -26,10 +26,39 @@
     </header>
 
     <ul>
+    <li>
+      <li class="film-listing">
+        <span class="name">{{name}}</span>
+        <span class="studio"></span>
+        <span class="rating"></span>
+        <span class="delete"></span>
+      </li>
+    </li>
       {{#each tasks}}
         {{> task}}
       {{/each}}
     </ul>
+
+    <div class="details-modal {{#if detailModal}}open{{/if}}" style="background-image:url({{details.backdrop}});">
+      <span class="detail-modal-close">&times;</span>
+      {{#if details.poster}}
+        <img src="{{details.poster}}" alt="" class="poster">
+      {{/if}}
+
+      <div class="detail-text">
+        <h3>{{details.name}}</h3>
+        <p>
+          Run Time: {{details.runtime}} min | Original Release: {{details.release_date}}
+        </p>
+        {{#if details.overview}}
+          <p>
+            {{details.overview}}
+          </p>
+        {{/if}}
+      </div>
+
+    </div>
+
   </div>
 </body>
 
@@ -53,10 +82,20 @@
     <span class="delete">
         <button class="delete">&times;</button>
     </span>
-    <div class="details">
+<!--     <div class="details" style="background-image:url({{backdrop}});">
+      <div class="detail-text">
+        <p>
+          Run Time: {{runtime}} min | Original Release: {{release_date}}
+        </p>
+        {{#if overview}}
+          <p>
+            {{overview}}
+          </p>
+        {{/if}}
+      </div>
       {{#if poster}}
         <img src="{{poster}}" alt="" class="poster">
       {{/if}}
-    </div>
+    </div> -->
   </li>
 </template>
