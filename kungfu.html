@@ -1,0 +1,43 @@
+<!-- simple-todos.html -->
+<head>
+  <title>Todo List</title>
+  <link href='http://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Kung Fu Film List</h1>
+
+    {{> loginButtons}}
+
+    {{#if isAdmin}}
+      <form class="new-task">
+        <input type="text" name="name" placeholder="Type to add new tasks" required/>
+        <select name="studio" id="studio" required>
+            <option value="Shaw Brothers">Shaw Brothers</option>
+        </select>
+        <input type="number" name="rating" min="0" max="10"/>
+        <input type="submit" value="Submit">
+      </form>
+    {{/if}}
+
+    </header>
+
+    <ul>
+      {{#each tasks}}
+        {{> task}}
+      {{/each}}
+    </ul>
+  </div>
+</body>
+
+<template name="task">
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
+
+    <span class="name">{{name}} {{#if rating}} - {{rating}} {{/if}}{{#if studio}} - {{studio}}{{/if}}</span>
+  </li>
+</template>
