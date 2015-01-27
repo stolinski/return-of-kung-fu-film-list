@@ -74,7 +74,6 @@ ul {
 }
 
 .delete {
-  float: right;
   font-weight: bold;
   background: none;
   font-size: 1em;
@@ -87,6 +86,30 @@ li {
   list-style: none;
   padding: 15px;
   border-bottom: #eee solid 1px;
+}
+
+.film-listing {
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.film-listing span{
+    display: block;
+}
+
+.film-listing .name{
+    width: 30%;
+}
+
+.film-listing .details {
+  width: 100%;
+}
+
+.poster {
+  max-width: 200px;
+  border: solid 3px #FFF;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 li .text {

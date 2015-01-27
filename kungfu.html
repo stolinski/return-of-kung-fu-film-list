@@ -8,12 +8,13 @@
   <div class="container">
     <header>
       <h1>Kung Fu Film List</h1>
-
+    <button id="fetchButton">Fetch</button>
     {{> loginButtons}}
 
     {{#if isAdmin}}
       <form class="new-task">
         <input type="text" name="name" placeholder="Type to add new tasks" required/>
+        <input type="number" name="year" min="1960" max="2020"/>
         <select name="studio" id="studio" required>
             <option value="Shaw Brothers">Shaw Brothers</option>
         </select>
@@ -33,11 +34,29 @@
 </body>
 
 <template name="task">
-  <li class="{{#if checked}}checked{{/if}}">
-    <button class="delete">&times;</button>
-
-    <input type="checkbox" checked="{{checked}}" class="toggle-checked" />
-
-    <span class="name">{{name}} {{#if rating}} - {{rating}} {{/if}}{{#if studio}} - {{studio}}{{/if}}</span>
+  <li class="film-listing">
+    <span class="name">{{name}}</span>
+    <span class="studio">
+        {{#if studio}}
+            {{studio}}
+        {{else}}
+            Studio Unknown
+        {{/if}}
+    </span>
+    <span class="rating">
+        {{#if rating}}
+            {{rating}}
+        {{else}}
+            Not Yet Rated
+        {{/if}}
+    </span>
+    <span class="delete">
+        <button class="delete">&times;</button>
+    </span>
+    <div class="details">
+      {{#if poster}}
+        <img src="{{poster}}" alt="" class="poster">
+      {{/if}}
+    </div>
   </li>
 </template>
