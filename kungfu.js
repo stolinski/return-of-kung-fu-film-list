@@ -103,7 +103,8 @@ if (Meteor.isClient) {
       Session.set("hideCompleted", event.target.checked);
     },
 
-    'click .film-listing' : function () {
+    'click .name' : function () {
+      Session.set("modalMovie", event.target.outerText);
       Session.set("detailModal", true);
     },
 

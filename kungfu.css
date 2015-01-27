@@ -106,18 +106,20 @@ li {
   opacity: 0;
   visibility: hidden;
   position: fixed;
-  left: 0;
+  left: -100%;
   top: 0;
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
+  background-position: center;
   -webkit-background-size: cover;
        -o-background-size: cover;
           background-size: cover;
-  transition: all 0.2s ease;
+  transition: all 0.4s ease;
 }
 
 .details-modal.open {
+  left: 0;
   opacity: 1;
   visibility: visible;
 }
@@ -139,8 +141,13 @@ li {
   top: 10%;
   right: 10%;
   background: rgba(255,255, 255, 0.9);
-  padding: 20px;
+  padding: 40px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.detail-text p {
+  font-size: 1.8em;
+  line-height: 1.4;
 }
 
 .detail-text > h3 {
