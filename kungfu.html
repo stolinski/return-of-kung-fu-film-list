@@ -2,19 +2,19 @@
 <head>
   <title>Todo List</title>
   <link href='http://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-  <div class="container">
-    <header>
-      <h1>Kung Fu Film List</h1>
-    <button id="toggle">Toggle</button>
+  <header>
+    <h1>Kung Fu Film List</h1>
+
     {{> loginButtons}}
 
     {{#if isAdmin}}
       <form class="new-task">
-        <input type="text" name="name" placeholder="Type to add new tasks" required/>
-        <input type="number" name="year" min="1960" max="2020"/>
+        <input type="text" name="name" placeholder="Five Deadly Venoms" required/>
+        <input type="number" name="year" min="1960" max="2020" placeholder="1978"/>
         <select name="studio" id="studio" required>
             <option value="Shaw Brothers">Shaw Brothers</option>
         </select>
@@ -23,17 +23,17 @@
       </form>
     {{/if}}
 
-    </header>
+  </header>
 
+  <div class="container">
     <ul>
-    <li>
-      <li class="film-listing">
-        <span class="name">{{name}}</span>
-        <span class="studio"></span>
-        <span class="rating"></span>
-        <span class="delete"></span>
+      <li class="film-listing table-header">
+        <span class="year">Year</span>
+        <span class="name">Title</span>
+        <span class="studio">Studio</span>
+        <span class="rating">Rating</span>
+        <span class="controls">Controls</span>
       </li>
-    </li>
       {{#each tasks}}
         {{> task}}
       {{/each}}
@@ -64,6 +64,7 @@
 
 <template name="task">
   <li class="film-listing">
+    <span class="year">{{year}}</span>
     <span class="name">{{name}}</span>
     <span class="studio">
         {{#if studio}}
@@ -79,7 +80,7 @@
             Not Yet Rated
         {{/if}}
     </span>
-    <span class="delete">
+    <span class="controls">
         <button class="delete">&times;</button>
     </span>
   </li>

@@ -1,35 +1,52 @@
-/* CSS declarations go here */
-body {
-  font-family: sans-serif;
-  background-color: #ecf0f1;
-  background-attachment: fixed;
+lt-gray = #ecf0f1
+red = #c0392b
 
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
 
-  padding: 0;
-  margin: 0;
+roboto()
+  font-family 'Roboto', sans-serif
 
-  font-size: 14px;
-}
+body
+  color #333
+  background-color lt-gray
+  background-attachment fixed
+  position absolute
+  top 0
+  bottom 0
+  left 0
+  right 0
+  padding 0
+  margin 0
+  roboto()
+
+::-moz-selection
+  background red
+  color #FFF
+  text-shadow none
+
+::selection
+  background red
+  color #FFF
+  text-shadow none
+
 
 a {
     color: #C0392B;
 }
 
+.new-task
+  box-shadow 1px 1px 4px rgba(0, 0, 0, 0.2)
+  max-width 80%
+  margin 10px auto
+  background white
+
 .container {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  max-width: 900px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  max-width: 80%;
   margin: 10px auto;
-  min-height: 100%;
   background: white;
 }
 
 header {
-  background: #FFF;
   padding: 20px 15px 15px 15px;
   position: relative;
 }
@@ -45,7 +62,7 @@ h1 {
   display: inline-block;
   margin-right: 1em;
   font-weight: 300;
-  border-bottom: 5px solid #c0392b;
+  border-bottom: 5px solid red;
   font-family: 'Passion One', cursive;
 }
 
@@ -73,13 +90,12 @@ ul {
   background: white;
 }
 
-.delete {
-  font-weight: bold;
-  background: none;
-  font-size: 1em;
-  border: none;
-  position: relative;
-}
+.delete
+  font-weight bold
+  background none
+  font-size 1em
+  border none
+  position relative
 
 li {
   position: relative;
@@ -88,19 +104,39 @@ li {
   border-bottom: #eee solid 1px;
 }
 
-.film-listing {
-    justify-content: space-between;
-    display: flex;
-    flex-wrap: wrap;
-}
+.film-listing
+  justify-content space-between
+  display flex
+  flex-wrap wrap
 
-.film-listing span{
-    display: block;
-}
+.film-listing span
+  display block
 
-.film-listing .name{
-    width: 30%;
-}
+.name
+  width 30%
+  font-weight 700
+  color red;
+  font-size 1.6em
+
+.year
+  width 10%
+
+.studio
+  width 20%
+
+.rating
+  width 20%
+
+.controls
+  width 8%
+
+.table-header
+  span
+    padding-bottom 5px
+    border-bottom 2px solid red
+    font-size 1.2em
+    font-weight 700
+    color #333
 
 .details-modal {
   opacity: 0;
@@ -133,6 +169,7 @@ li {
   padding: 29px;
   top: 0;
   right: 0;
+  cursor: pointer;
 }
 
 .detail-text {
@@ -161,23 +198,6 @@ li {
   max-width: 30%;
   border: solid 3px #FFF;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-}
-
-li .text {
-  margin-left: 10px;
-}
-
-li.checked {
-  color: #888;
-}
-
-li.checked .text {
-  text-decoration: line-through;
-}
-
-li.private {
-  background: #eee;
-  border-color: #ddd;
 }
 
 header .hide-completed {
