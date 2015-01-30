@@ -8,6 +8,13 @@ roboto()
 passion()
   font-family 'Passion One', cursive
 
+html
+  box-sizing border-box
+
+*, *:before, *:after
+  box-sizing inherit
+
+
 body
   color #333
   background-color lt-gray
@@ -37,20 +44,24 @@ a
 
 .new-task
   box-shadow 1px 1px 4px rgba(0, 0, 0, 0.2)
+  background white
+  padding 20px
+  input
+      max-width 400px
+      display block
+
+.container
+  box-shadow 1px 1px 4px rgba(0, 0, 0, 0.2)
   max-width 80%
   margin 10px auto
   background white
 
-.container {
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  max-width: 80%;
-  margin: 10px auto;
-  background: white;
-}
-
 header {
   padding: 20px 15px 15px 15px;
   position: relative;
+  width 80%
+  margin 0 auto
+
 }
 
 #login-buttons {
@@ -130,7 +141,7 @@ li {
   width 20%
 
 .controls
-  width 8%
+  width 10%
 
 .table-header
   span
@@ -141,6 +152,7 @@ li {
     color #333
 
 .details-modal {
+  background-color #333
   opacity: 0;
   visibility: hidden;
   position: fixed;

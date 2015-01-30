@@ -33,9 +33,17 @@ if (Meteor.isClient) {
         Session.set('modalMovie', '5 deadly venoms');
     });
 
+    Template.registerHelper('isAdmin', function() {
+        if (Meteor.user()) {
+            return (Meteor.user().username === 'admin');
+        } else {
+            return false;
+        }
+    });
+
     Template.body.helpers({
         tasks: function() {
-            return Tasks.find({owner: Meteor.userId()}, {sort: Session.get('sort_by')} );
+            return Tasks.find({}, {sort: Session.get('sort_by')});
         },
         details: function() {
             return Tasks.findOne({name: Session.get('modalMovie')});
@@ -48,13 +56,6 @@ if (Meteor.isClient) {
         },
         incompleteCount: function() {
             return Tasks.find({checked: {$ne: true}, owner: Meteor.userId()}).count();
-        },
-        isAdmin: function() {
-            if (Meteor.user()) {
-                return (Meteor.user().username === 'admin');
-            } else {
-                return false;
-            }
         }
     });
 
@@ -125,11 +126,18 @@ if (Meteor.isClient) {
         }
     });
 
+    Template.task.helpers({
+        isAdmin: function() {
+            if (Meteor.user()) {
+                return (Meteor.user().username === 'admin');
+            } else {
+                return false;
+            }
+        }
+    });
+
     Template.task.events({
 
-        'click .delete': function() {
-            Tasks.remove(this._id);
-        }
     });
 
     Accounts.ui.config({
