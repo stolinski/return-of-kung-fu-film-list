@@ -30,7 +30,9 @@ if (Meteor.isClient) {
     Meteor.startup(function() {
         Session.set('sort_by', {year: 1});
         Session.set('detailModal', false);
+        Session.set('editModal', false);
         Session.set('modalMovie', '5 deadly venoms');
+        Session.set('editId', {});
     });
 
     Template.registerHelper('isAdmin', function() {
@@ -54,8 +56,11 @@ if (Meteor.isClient) {
         detailModal: function() {
             return Session.get('detailModal');
         },
-        incompleteCount: function() {
-            return Tasks.find({checked: {$ne: true}, owner: Meteor.userId()}).count();
+        editModal: function() {
+            return Session.get('editModal');
+        },
+        editFilm: function() {
+            return Session.get('editId');
         }
     });
 
@@ -96,10 +101,6 @@ if (Meteor.isClient) {
             return false;
         },
 
-        'change .hide-completed input': function(event) {
-            Session.set('hideCompleted', event.target.checked);
-        },
-
         'click .name' : function() {
             Session.set('modalMovie', event.target.outerText);
             Session.set('detailModal', true);
@@ -107,6 +108,9 @@ if (Meteor.isClient) {
 
         'click .detail-modal-close' : function() {
             Session.set('detailModal', false);
+        },
+        'click .edit-modal-close' : function() {
+            Session.set('editModal', false);
         },
 
         'click .year' : function() {
@@ -116,13 +120,20 @@ if (Meteor.isClient) {
                 Session.set('sort_by', {year: 1});
             }
         },
-
-        'click #toggle': function() {
-            if (Session.get('sort_by').createdAt === 1) {
-                Session.set('sort_by', {createdAt: -1});
-            } else {
-                Session.set('sort_by', {createdAt: 1});
-            }
+        'click #edit-toggle' : function() {
+            Session.set('editModal', true);
+            Session.set('editId', this);
+        },
+        // Submits edit form
+        'submit .film-edit': function(event) {
+            Tasks.update(event.target.id.value, {$set: {
+                name: event.target.name.value,
+                rating: event.target.rating.value,
+                studio: event.target.studio.value
+            }});
+            Session.set('editModal', false);
+            // Prevent default form submit
+            return false;
         }
     });
 
@@ -137,7 +148,6 @@ if (Meteor.isClient) {
     });
 
     Template.task.events({
-
     });
 
     Accounts.ui.config({
