@@ -70,6 +70,8 @@ if (Meteor.isClient) {
             var name = event.target.name.value;
             var rating = event.target.rating.value;
             var studio = event.target.studio.value;
+            var clip = event.target.clip.value;
+            var director = event.target.director.value;
             var poster = '';
             var backdrop = '';
             var year = event.target.year.value;
@@ -83,6 +85,8 @@ if (Meteor.isClient) {
                         owner: Meteor.userId(),
                         rating: rating,
                         studio: studio,
+                        clip: clip,
+                        director: director,
                         overview: results.data.overview,
                         release_date: results.data.release_date,
                         runtime: results.data.runtime,
@@ -129,7 +133,8 @@ if (Meteor.isClient) {
             Tasks.update(event.target.id.value, {$set: {
                 name: event.target.name.value,
                 rating: event.target.rating.value,
-                studio: event.target.studio.value
+                studio: event.target.studio.value,
+                director: event.target.director.value
             }});
             Session.set('editModal', false);
             // Prevent default form submit

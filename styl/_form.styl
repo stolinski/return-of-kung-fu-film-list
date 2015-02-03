@@ -1,0 +1,56 @@
+form
+  margin-top: 10px;
+  margin-bottom: -10px;
+  position: relative;
+
+input, select
+  background: transparent;
+  border: none;
+  width: 500px
+  font-size: 1em;
+  margin-bottom 8px
+  display block
+  padding: 16px 0px 8px
+  border-bottom 1px solid dash
+  color black
+  &:focus
+    outline 0
+    border-bottom solid 1px #40C4FF
+    outline-offset 0
+
+input[type="submit"]
+    font-size 2.0em
+    font-family 'Passion One', cursive
+    background #c0392b
+    text-align center
+    color #FFF
+    padding 20px 0
+    width 100%
+    margin 20px 0
+
+
+select
+  border-radius 0
+  border-bottom 1px solid dash
+  color hint
+  -webkit-appearance: none;
+
+
+::-webkit-input-placeholder
+   color: hint;
+
+:-moz-placeholder
+   color: hint;
+
+::-moz-placeholder
+   color: hint;
+
+:-ms-input-placeholder
+   color: hint;
+
+.input-flex-group
+  display flex
+  flex-wrap wrap
+  justify-content space-between
+  input, select
+    width 48%
