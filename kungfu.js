@@ -113,6 +113,7 @@ if (Meteor.isClient) {
         'click .detail-modal-close' : function() {
             Session.set('detailModal', false);
         },
+
         'click .edit-modal-close' : function() {
             Session.set('editModal', false);
         },
@@ -124,6 +125,7 @@ if (Meteor.isClient) {
                 Session.set('sort_by', {year: 1});
             }
         },
+
         'click #edit-toggle' : function() {
             Session.set('editModal', true);
             Session.set('editId', this);
@@ -153,6 +155,9 @@ if (Meteor.isClient) {
     });
 
     Template.task.events({
+        'click .delete': function() {
+            Tasks.remove(this._id);
+        }
     });
 
     Accounts.ui.config({
