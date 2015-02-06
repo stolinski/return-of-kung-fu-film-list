@@ -71,6 +71,7 @@ if (Meteor.isClient) {
             var rating = event.target.rating.value;
             var studio = event.target.studio.value;
             var clip = event.target.clip.value;
+            var buy = event.target.buy.value;
             var director = event.target.director.value;
             var poster = '';
             var backdrop = '';
@@ -86,6 +87,7 @@ if (Meteor.isClient) {
                         rating: rating,
                         studio: studio,
                         clip: clip,
+                        buy: buy,
                         director: director,
                         overview: results.data.overview,
                         release_date: results.data.release_date,
@@ -136,6 +138,8 @@ if (Meteor.isClient) {
                 name: event.target.name.value,
                 rating: event.target.rating.value,
                 studio: event.target.studio.value,
+                buy: event.target.buy.value,
+                clip: event.target.clip.value,
                 director: event.target.director.value
             }});
             Session.set('editModal', false);
@@ -163,5 +167,4 @@ if (Meteor.isClient) {
     Accounts.ui.config({
         passwordSignupFields: 'USERNAME_ONLY'
     });
-
 }

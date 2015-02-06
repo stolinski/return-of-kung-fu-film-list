@@ -193,9 +193,11 @@ li
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     padding: 20px;
     width 100%
+    top 180px
+    left 0
+    position: absolute;
     +above('s')
       width: 40%;
-      position: absolute;
       top: 10%;
       right: 10%;
       padding: 40px;
@@ -204,14 +206,17 @@ li
         line-height: 1.4;
       > h3
         font-size: 3em;
-
-.poster
-  position absolute
-  top 10%
-  left 10%
-  max-width 30%
-  border solid 3px #FFF
-  box-shadow 1px 1px 4px rgba(0, 0, 0, 0.2)
+  .poster
+    position absolute
+    top 2%
+    left 10%
+    max-width 40%
+    border solid 3px #FFF
+    box-shadow 1px 1px 4px rgba(0, 0, 0, 0.2)
+    +above('s')
+      top 10%
+      left 10%
+      max-width 30%
 
 header .hide-completed
   float right

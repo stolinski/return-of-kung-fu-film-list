@@ -1,6 +1,7 @@
 <!-- simple-todos.html -->
 <head>
   <title>Kung Fu Film List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 </head>
@@ -22,6 +23,7 @@
           <input id="director" type="text" name="director" placeholder="Director"/>
           <input type="number"  id="rating" name="rating" min="0" max="10" placeholder="Film Rating 0 - 10"/>
           <input id="clip" type="text" name="clip" placeholder="Watch URL"/>
+          <input id="buy" type="text" name="buy" placeholder="Buy URL"/>
         </div>
         <input type="submit" value="Submit">
       </form>
@@ -42,6 +44,8 @@
         </select>
         <input id="director" type="text" name="director" placeholder="Director" value="{{editFilm.director}}"/>
         <input type="number"  id="rating" name="rating" min="0" max="10" placeholder="10" value="{{editFilm.rating}}"/>
+        <input id="clip" type="text" name="clip" placeholder="Watch URL" value="{{editFilm.clip}}"/>
+        <input id="buy" type="text" name="buy" placeholder="Buy URL" value="{{editFilm.buy}}"/>
         <input name="id" type="hidden" value="{{editFilm._id}}" />
         <input type="submit" value="Submit">
       </form>
@@ -64,7 +68,7 @@
     <div class="details-modal {{#if detailModal}}open{{/if}}" style="background-image:url({{details.backdrop}});">
       <span class="detail-modal-close">&times;</span>
       {{#if details.poster}}
-        <img src="{{details.poster}}" alt="" class="poster">
+        <img src="{{details.poster}}" alt="" class="poster" id="poster">
       {{/if}}
 
       <div class="detail-text">
@@ -82,10 +86,22 @@
     </div>
 
   </div>
+ <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-9079749-9', 'kungfufilmlist.com');
+  ga('send', 'pageview');
+
+</script>
 </body>
 
 <template name="task">
+
   <li class="film-listing">
+
     <span class="year">{{year}}</span>
     <span class="name">{{name}}</span>
     <span class="studio">
@@ -110,12 +126,22 @@
         {{/if}}
     </span>
     <span class="controls">
-      <a target="_blank" href="{{clip}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-    {{#if isAdmin}}
-      <svg id="edit-toggle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-      <button class="delete">&times;</button>
-    {{/if}}
+
+      {{#if clip}}
+        <a target="_blank" href="{{clip}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></a>
+      {{/if}}
+
+      {{#if buy}}
+        <a target="_blank" href="{{buy}}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg></a>
+      {{/if}}
+
+      {{#if isAdmin}}
+        <svg id="edit-toggle" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+        <button class="delete">&times;</button>
+      {{/if}}
+
     </span>
+
   </li>
+
 </template>

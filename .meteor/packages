@@ -11,6 +11,6 @@ accounts-ui
 accounts-password
 http
 mquandalle:stylus
-mike:mocha
 msavin:mongoinspector
 meteorhacks:kadira
+velocity:html-reporter
